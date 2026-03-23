@@ -11,41 +11,44 @@
 # @param {TreeNode} root
 # @return {String[]}
 def binary_tree_paths(root)
-  # If tree is empty, return empty array
+  # If tree is empty, return empty list
   return [] unless root
 
-  # Stack to maintain current path from root to node
-  @stack = []
+  # Stack to maintain current path from root to current node
+  stack = []
 
   # Result array to store all root-to-leaf paths
-  @result = []
+  result = []
 
   # Start DFS traversal
-  preorder(root)
+  preorder(root, stack, result)
 
   # Return all collected paths
-  return @result
+  result
 end
 
-def preorder(root)
-  # Base case: if node is nil, do nothing
+def preorder(root, stack, result)
+  # Base case: if node is nil, stop recursion
   return unless root
 
   # Add current node value to the path
-  @stack.push(root.val)
+  stack.push(root.val)
 
-  # Check if current node is a leaf node (no left and right child)
+  # If current node is a leaf (no left and right child)
   if root.left.nil? && root.right.nil?
-    # Convert current path to string and add to result
-    @result << @stack.join('->')
+    # Convert current path to string format "a->b->c"
+    # and add it to the result
+    result << stack.join('->')
   else
     # Traverse left subtree
-    preorder(root.left)
+    preorder(root.left, stack, result)
 
     # Traverse right subtree
-    preorder(root.right)
+    preorder(root.right, stack, result)
   end
 
-  # Backtrack: remove current node from path before returning to parent
-  @stack.pop
+  # Backtracking step:
+  # Remove current node before returning to parent
+  # Ensures correct path for other branches
+  stack.pop
 end
