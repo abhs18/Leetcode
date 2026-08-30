@@ -1,23 +1,23 @@
-# @param {String} s
-# @return {String}
-# WIth Sorting
-# def frequency_sort(s)
-#     hash = Hash.new(0)
+@param {String} s
+@return {String}
+WIth Sorting
+def frequency_sort(s)
+    hash = Hash.new(0)
 
-#     s.chars.each do |char|
-#       hash[char] += 1
-#     end
+    s.chars.each do |char|
+      hash[char] += 1
+    end
 
-#     hash = hash.sort_by {|k,v| -v}
-#     ans = ""
-#     hash.each do |k,cnt|
-#        (0...cnt).each do |i|
-#           ans += k
-#        end
-#     end
+    hash = hash.sort_by {|k,v| -v}
+    ans = ""
+    hash.each do |k,cnt|
+       (0...cnt).each do |i|
+          ans += k
+       end
+    end
 
-#     return ans
-# end
+    return ans
+end
 
 
 #WIth Heap

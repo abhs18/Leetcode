@@ -1,0 +1,7 @@
+Nearest distance in unweighted graph = BFS.
+Nearest distance from many sources = put all sources in queue first.
+
+
+Shortest path in unweighted grid = BFS.
+8 directions allowed.
+Distance starts at 1 because path length counts cells.
